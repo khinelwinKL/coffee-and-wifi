@@ -1,0 +1,26 @@
+{% include "header.html" %}
+
+<div class="container-fluid">
+<table class="table table-hover table-sm cafes-table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Cafe Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Cafe Detail</th>
+    </tr>
+  </thead>
+  {% for cafe in all_cafes: %}
+  <tbody>
+    <tr>
+      <th scope="row" style="width: 30px;">{{ cafe.id }}</th>
+      <td style="width: 30px;">{{ cafe.name }}</td>
+      <td style="width: 30px;">{{ cafe.location }}</td>
+      <td style="width: 30px;">
+        <a href="{{ url_for('get_cafe_detail', cafe_id=cafe.id) }}">Check for Detail</a>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+</div>

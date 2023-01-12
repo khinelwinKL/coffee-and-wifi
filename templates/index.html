@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mukta&family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <title>Coffee & Wifi</title>
+  </head>
+  <body>
+    <div class="introduction">
+      <img class="coffee-shop" src="{{ url_for('static', filename='images/coffee-shop.png') }}" alt="coffee-shop">
+      <h1>☕ Coffee & Wifi 💻</h1>
+      <h3>Welcome to the Coffee & Wifi!</h3>
+      <hr>
+      <p>Searching for a perfect cafe to work or study?</p>
+      <p>You've come to the right place. Click the link below to check out my collection of cafes with data on coffee quality, wifi speed, power socket availability & more.</p>
+      <a class="btn btn-light cafes-link" role="button" href="{{ url_for('all_cafes') }}">Show Me!</a>
+    </div>
+  </body>
+</html>

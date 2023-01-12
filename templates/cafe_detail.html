@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <div class="card">
+        <div class="front" style="background-image: url('{{ cafe.img_url }}');">
+        </div>
+        <div class="back" style="background-color: #D7E9B9;">
+          <h4>{{ cafe.name }}</h4><
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-8 cafe-features">
+    {% if current_user.id == 1: %}
+     <h5>{{ cafe.name }}</h5><a href="{{ url_for('delete_cafe', cafe_id=cafe.id) }}">❌</a>
+    {% else: %}
+     <h5>{{ cafe.name }}</h5>
+    {% endif %}
+      <p><i>Located at {{ cafe.location }}</i></p>
+     {% if cafe.has_sockets == 1: %}
+      <p>Has Sockets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</p>
+     {% else: %}
+      <p>Has Sockets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❌</p>
+     {% endif %}
+
+     {% if cafe.has_wifi == 1: %}
+      <p>Has Wifi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</p>
+     {% else: %}
+      <p>Has Wifi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❌</p>
+     {% endif %}
+
+      {% if cafe.has_toilet == 1: %}
+       <p>Has Toilet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</p>
+      {% else: %}
+       <p>Has Toilet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❌</p>
+      {% endif %}
+
+      {% if cafe.can_take_calls == 1: %}
+       <p>Can Take Calls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</p>
+      {% else: %}
+       <p>Can Take Calls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❌</p>
+      {% endif %}
+
+      <p>Seats - {{ cafe.seats }}</p>
+      <p>Coffee Price - {{ cafe.coffee_price }}</p>
+      <a class="location-url" href="{{ cafe.map_url }}">Location Map</a><br>
+      <button class="btn btn-outline-secondary feature-button"><a class="feature-link" href="{{ url_for('update_cafe', cafe_id=cafe.id) }}">Update Cafe</a></button>
+      <button class="btn btn-outline-secondary feature-button"><a class="feature-link" href="{{ url_for('comment', cafe_id=cafe.id) }}">Post Comment</a></button>
+    </div>
+  </div>
+
+<div class="comments-display">
+    <h2>All Comments</h2>
+    <ul class="comment-list">
+    {% if cafe.comments: %}
+    {% for comment in cafe.comments: %}
+      <li>
+         <div class="commenter-image">
+             <img src="{{ comment.user.name | gravatar }}">
+             <span class="date sub-text">{{ comment.user.name }}</span>
+         </div>
+          <div class="comment-text">
+              <p>{{ comment.comment_text }}</p>
+          </div>
+      </li>
+    {% endfor %}
+    {% endif %}
+    </ul>
+</div>

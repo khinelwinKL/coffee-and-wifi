@@ -1,0 +1,22 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% include 'header.html' %}
+
+<div class="container cafe-form">
+    <div class="row">
+        <div class="col-lg-10 col-md-12">
+           {% if not update: %}
+           <h5>Add New Cafe</h5>
+           {% else: %}
+            <h5>Update Cafe</h5>
+            {% endif %}
+
+            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "secondary"}) }}
+
+        </div>
+    </div>
+</div>
+
+
+
+
